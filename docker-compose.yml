@@ -1,0 +1,40 @@
+version: "3.1"
+
+services:
+
+  php:
+    container_name: ${PROJECT_NAME}_php_${VERSION_ID}
+    build:
+      context: ./docker/php
+    ports:
+      - 9000:9000
+    volumes:
+      - ./src:/src:cached
+      - ./docker/php/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
+      - ./logs/php:/usr/local/etc/php/logs
+    depends_on:
+      - redis
+
+  web:
+    container_name: ${PROJECT_NAME}_web_${VERSION_ID}
+    build:
+      context: ./docker/apache
+    ports:
+      - ${HTTP_PORT_EXPOSED}:80
+    volumes:
+      - ./src/api:/src/api:ro
+      - ./docker/apache/webapp.conf:/usr/local/apache2/conf/webapp.conf:ro
+      - ./logs/web:/var/log/apache2
+    environment:
+      PROJECT_NAME: ${PROJECT_NAME}
+    depends_on:
+      - php
+
+  redis:
+    image: redis
+    container_name: redis-cache
+    expose:
+      - 6379
+    ports:
+      - 6389:6379
+

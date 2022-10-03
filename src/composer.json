@@ -1,0 +1,25 @@
+{
+    "name": "ocramsoft/php-boilerplate",
+    "description": "A boilerplate for new composer based PHP projects.",
+    "license": "MIT",
+    "require": {
+        "php": "^7.2",
+        "predis/predis": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vendor\\Package\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Vendor\\Package\\": "tests"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "7.2"
+        },
+        "sort-packages": true
+    }
+}

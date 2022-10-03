@@ -1,0 +1,11 @@
+# GIT
+.git
+
+# Logs
+logs
+*.log
+logs.log.*
+
+#Composer
+vendor
+
