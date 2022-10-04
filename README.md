@@ -61,5 +61,5 @@ On the grid, positions occupied by symbol `-` are non taken positions.
 
 ## Examples
 
-run sh scripts in root folder to test few api interactions.
+run `sh` scripts in root folder to test few api interactions.
 

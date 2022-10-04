@@ -12,4 +12,10 @@ class StartGameValidator extends AbstractRequestValidator {
         parent::__construct(self::$mandatory_fields,[]);
     }
 
+    protected function additionalChecks(array $request):string {
+        if( $request[PLAYER_X_PARAM] && $request[PLAYER_O_PARAM] && $request[PLAYER_X_PARAM] == $request[PLAYER_O_PARAM])
+            return 'You don\'t fool me! Players name must be different';
+        return '';
+    }
+
 }

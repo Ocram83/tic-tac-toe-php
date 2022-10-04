@@ -6,7 +6,7 @@ class GameModel
     public string $gameId;
     public string $player_x;
     public string $player_o;
-    public string $turn;
+    public int $turn;
     public array $grid = [];
     public string $status;
     public int $number_of_moves;
@@ -22,7 +22,7 @@ class GameModel
         $this->gameId = $gameId;
         $this->player_x = $params[PLAYER_X_PARAM];
         $this->player_o = $params[PLAYER_O_PARAM];
-        $this->turn = $params[REDIS_PLAYER_TURN]??$params[PLAYER_X_PARAM];
+        $this->turn = $params[REDIS_PLAYER_TURN]??1;
         $this->number_of_moves = $params[REDIS_NUMBER_OF_MOVES]??0;
         $this->status = $params[REDIS_STATUS_PARAM]??0;
         $this->winner = $params[REDIS_WINNER]??'';
@@ -53,19 +53,22 @@ class GameModel
        {
         $this->status = 2; 
        }
-       $this->turn = $this->getNextPlayer();
+        $this->setNextPlayer();
         
     }
+
+    public function getPlayers(){
+       return [$this->player_x, $this->player_o];
+    }
+
     private function getPlayerSign(){
-        if(strcmp($this->turn,$this->player_x) == 0)
+        if($this->turn == 1)
             return "x";
         return "o";
     }
 
-    private function getNextPlayer(){
-        if(strcmp($this->turn,$this->player_x) == 0)
-            return $this->player_o;
-        return $this->player_x;
+    private function setNextPlayer(){
+        $this->turn = $this->turn%2 +1;
     }
 
     private function checkWinningMove(int $rowNum, int $columnNum): bool {

@@ -12,6 +12,7 @@ echo "Game Id is "$id;
 response=$(curl --silent --location --request POST 'localhost/tic-tac-toe/move.php' \
 --header 'Content-Type: application/json' \
 --data-raw "{
+    \"player\":1,
     \"row\": \"0\",
     \"column\": \"0\",
     \"game_id\": \"$id\"
@@ -22,6 +23,7 @@ echo "Response is $response "
 response=$(curl --silent --location --request POST 'localhost/tic-tac-toe/move.php' \
 --header 'Content-Type: application/json' \
 --data-raw "{
+    \"player\":2,
     \"row\": \"0\",
     \"column\": \"1\",
     \"game_id\": \"$id\"
@@ -32,6 +34,7 @@ echo "Response is $response "
 response=$(curl --silent --location --request POST 'localhost/tic-tac-toe/move.php' \
 --header 'Content-Type: application/json' \
 --data-raw "{
+    \"player\":1,
     \"row\": \"0\",
     \"column\": \"2\",
     \"game_id\": \"$id\"
@@ -43,6 +46,7 @@ echo "Response is $response "
 response=$(curl --silent --location --request POST 'localhost/tic-tac-toe/move.php' \
 --header 'Content-Type: application/json' \
 --data-raw "{
+    \"player\":2,
     \"row\": \"1\",
     \"column\": \"1\",
     \"game_id\": \"$id\"
@@ -54,6 +58,7 @@ echo "Response is $response "
 response=$(curl --silent --location --request POST 'localhost/tic-tac-toe/move.php' \
 --header 'Content-Type: application/json' \
 --data-raw "{
+    \"player\":1,
     \"row\": \"1\",
     \"column\": \"0\",
     \"game_id\": \"$id\"
@@ -64,6 +69,7 @@ echo "Response is $response "
 response=$(curl --silent --location --request POST 'localhost/tic-tac-toe/move.php' \
 --header 'Content-Type: application/json' \
 --data-raw "{
+    \"player\":2,
     \"row\": \"1\",
     \"column\": \"2\",
     \"game_id\": \"$id\"
@@ -75,6 +81,7 @@ echo "Response is $response "
 response=$(curl --silent --location --request POST 'localhost/tic-tac-toe/move.php' \
 --header 'Content-Type: application/json' \
 --data-raw "{
+    \"player\":1,
     \"row\": \"2\",
     \"column\": \"1\",
     \"game_id\": \"$id\"
@@ -85,6 +92,7 @@ echo "Response is $response "
 response=$(curl --silent --location --request POST 'localhost/tic-tac-toe/move.php' \
 --header 'Content-Type: application/json' \
 --data-raw "{
+    \"player\":2,
     \"row\": \"2\",
     \"column\": \"0\",
     \"game_id\": \"$id\"
@@ -96,6 +104,7 @@ echo "Response is $response "
 response=$(curl --silent --location --request POST 'localhost/tic-tac-toe/move.php' \
 --header 'Content-Type: application/json' \
 --data-raw "{
+    \"player\":1,
     \"row\": \"2\",
     \"column\": \"2\",
     \"game_id\": \"$id\"
@@ -106,6 +115,7 @@ echo "Response is $response "
 response=$(curl --silent --location --request POST 'localhost/tic-tac-toe/move.php' \
 --header 'Content-Type: application/json' \
 --data-raw "{
+    \"player\":2,
     \"row\": \"2\",
     \"column\": \"2\",
     \"game_id\": \"$id\"

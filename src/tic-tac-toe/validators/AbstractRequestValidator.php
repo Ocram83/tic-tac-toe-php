@@ -34,6 +34,9 @@ abstract class AbstractRequestValidator
             }
         }
 
+        if($additionalError = $this->additionalChecks($request) )
+            $validationErrors[] = $additionalError;
+
         if(count($validationErrors) > 0){
             throw new Exception("Validation errors: ". implode(", ", $validationErrors));
         }
@@ -66,6 +69,6 @@ abstract class AbstractRequestValidator
         return $validationError;
     }
     
-
+    protected function additionalChecks(array $request):string {return '' ;}
 
 }
